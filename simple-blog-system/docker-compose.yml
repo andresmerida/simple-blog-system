@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'post_dev'
+      MYSQL_USER: 'post_user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'mysql'
+    volumes:
+      - mysql-db:/var/lib/mysql/data
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+volumes:
+  mysql-db:
+    driver: local
