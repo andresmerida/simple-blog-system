@@ -1,5 +1,6 @@
 package org.adk.sbs.web.rest;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.adk.sbs.dto.ArticleDTO;
 import org.adk.sbs.dto.ArticleRequest;
@@ -38,7 +39,7 @@ public class ArticleController {
     }
 
     @PostMapping
-    public ResponseEntity<Long> create(@RequestBody final ArticleRequest articleRequest) throws URISyntaxException {
+    public ResponseEntity<Long> create(@RequestBody @Valid final ArticleRequest articleRequest) throws URISyntaxException {
         Long newId = articleService.create(articleRequest);
         return ResponseEntity
                 .created(new URI("/articles/" + newId))
